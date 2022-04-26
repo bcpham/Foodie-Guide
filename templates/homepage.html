@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}Home Page{% endblock %}
+
+{% block body %}
+
+
+<div id="map"></div>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFhOsBx1xykmQkDsUBAPhopg90lHNxTDs&callback=initMap"></script>
+
+
+<section>
+  <h2>Restaurant Search</h2>
+  <form action="/restaurant_search" method="POST">
+    
+    <p>Enter restaurant name: <input type="text" name="rname"></p>
+    <p>Enter City: <input type="text" name=""</p>
+    <p><input type="submit"></p>
+  
+  </form>
+</section>
+
+<section>
+  <h3>Log In</h3>
+    <form action="/login" method="POST">
+      
+      <p>E-mail: <input type="text" name="email"></p>
+      <p>Password: <input type="password" name="password"></p>
+      <p><input type="submit"></p>
+    
+    </form>
+  </section>
+
+<section>
+  <h4>Log Out</h4>
+    <form action="/logout">
+      <input type="submit" value="Log Out">
+    </form>
+</section>
+
+<section>
+<h5>New User? Create an account to bookmark your favorite restaurants!</h5>
+  <form action="/users" method="POST">
+    
+    <p>First name: <input type="text" name="fname"></p>
+    <p>Last name: <input type="text" name="lname"></p>
+    <p>E-mail: <input type="text" name="email"></p>
+    <p>Password: <input type="password" name="password"></p>
+    <p><input type="submit"></p>
+  
+  </form>
+</section>
+
+{% endblock %}
