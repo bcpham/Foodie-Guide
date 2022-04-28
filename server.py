@@ -1,12 +1,12 @@
 """Server for Foodie Guide"""
 
 from jinja2 import StrictUndefined
-from flask import Flask, render_template, request, flash, session, redirect
+from flask import Flask, render_template, request, flash, session, redirect, jsonify
 from model import connect_to_db, db
 from pprint import pformat
 
 import os
-import crud
+# import crud
 import json
 import pprint
 import requests
@@ -27,13 +27,27 @@ GOOGLE_API_KEY = os.environ['GOOGLE_API_KEY']
 # error.
 app.jinja_env.undefined = StrictUndefined
 
+#############################################################################
+
+# For Yelp Fusion API
+# Search by term and location:
+SEARCH_URL = 'https://api.yelp.com/v3/businesses/search' 
+#Business ID will come after slash, search by business ID.
+BUSINESS_URL = 'https://api.yelp.com/v3/businesses/'##
+HEADER = {}
+HEADER["Authorization"] = "Bearer " + YELP_API_KEY
+
+#############################################################################
 
 @app.route("/")
 def homepage():
     """Show homepage."""
 
-    return render_template("homepage.html")
+    data = []
 
+    return render_template('homepage.html', 
+                            pformat=pformat,
+                            data=data)
 #############################################################################
 
 @app.route("/users", methods=["POST"])
@@ -103,14 +117,30 @@ def user_profile(user_id):
 
 #############################################################################
 
-@app.route("/restaurant/search", methods=['POST'])
+@app.route("/restaurant-search", methods = ["POST"])
 def find_restaurant_via_yelp():
-    """Search for restaurants from Yelp."""
+    """Search for restaurant from Yelp and return business_ID."""
+    # similar to the submit-order.js from AJAX review
 
-    rname = request.form.get("rname")
-    pass
+    term = request.json.get("rname")
+    location = request.json.get("city")
+    limit = 1 # A search will return 1 restaurant
+
+    url_params = {
+        'term': term,
+        'location': location,
+        'limit': limit
+    }
+
+    search_request = requests.get(SEARCH_URL, headers=HEADER, params=url_params)
+    
+    # # bus_id = search_request.json()
+    # # ['businesses'][0]['id']
 
 
+    # # return redirect(f"/restaurant/{bus_id}")
+    return search_request.json() 
+    # return ""
 #############################################################################
 
 @app.route("/restaurant/google_detail")
@@ -119,15 +149,20 @@ def find_restaurant_detail_via_google():
 
     pass
 
-
-
 #############################################################################
 
-@app.route("/restaurant/yelp_detail")
-def find_restaurant_detail_via_yelp():
-    """Return restaurant details from Yelp."""
+@app.route("/restaurant/<business_id>")
+def find_restaurant_detail_via_yelp(business_id):
+    """Query the Yelp Business API by a business ID."""
+    
+    business_details = requests.get(BUSINESS_URL+business_id, headers=HEADER)
+    data = business_details.json()
 
-    pass
+    return render_template('homepage.html')
+                            # pformat=pformat,
+                            # data=data)
+
+
 
 #############################################################################
 

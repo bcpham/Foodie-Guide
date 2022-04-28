@@ -1,22 +1,34 @@
 {% extends 'base.html' %}
-{% block title %}Home Page{% endblock %}
+{% block title %}.::Foodie Guide::.{% endblock %}
 
 {% block body %}
 
 
 <div id="map"></div>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFhOsBx1xykmQkDsUBAPhopg90lHNxTDs&callback=initMap"></script>
-
+  <script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"
+  defer
+></script>
 
 <section>
   <h2>Restaurant Search</h2>
-  <form action="/restaurant_search" method="POST">
+  <form id="search-form" method="GET" action="/restaurant-search">
     
-    <p>Enter restaurant name: <input type="text" name="rname"></p>
-    <p>Enter City: <input type="text" name=""</p>
+    <p>Enter restaurant name: <input type="text" name="rname" id="rname"></p>
+    <p>Enter city: <input type="text" name="city" id="city"></p>
     <p><input type="submit"></p>
   
   </form>
+
+  
+</section>
+
+<section>
+  <div id="results-as-json">
+    <h4>Results as JSON</h4>
+    <pre>{{ data }}</pre>
+    <b id="restaurant-result">Expect JSON Result Here</b>
+  </div>
 </section>
 
 <section>
@@ -31,14 +43,14 @@
   </section>
 
 <section>
-  <h4>Log Out</h4>
+  <h3>Log Out</h3>
     <form action="/logout">
       <input type="submit" value="Log Out">
     </form>
 </section>
 
 <section>
-<h5>New User? Create an account to bookmark your favorite restaurants!</h5>
+<h4>New User? Create an account to bookmark your favorite restaurants!</h4>
   <form action="/users" method="POST">
     
     <p>First name: <input type="text" name="fname"></p>
@@ -50,4 +62,6 @@
   </form>
 </section>
 
+
+<script src="/static/js/yelp.js"></script>
 {% endblock %}
