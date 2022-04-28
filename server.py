@@ -122,7 +122,7 @@ def find_restaurant_via_yelp():
     """Search for restaurant from Yelp and return business_ID."""
     # similar to the submit-order.js from AJAX review
 
-    term = request.json.get("rname")
+    term = request.json.get("rname") #These are the keys in the JSON dict, passed via AJAX request
     location = request.json.get("city")
     limit = 1 # A search will return 1 restaurant
 
@@ -132,15 +132,20 @@ def find_restaurant_via_yelp():
         'limit': limit
     }
 
-    search_request = requests.get(SEARCH_URL, headers=HEADER, params=url_params)
+    search_request = requests.get(SEARCH_URL, headers=HEADER, params=url_params).json()
     
     # # bus_id = search_request.json()
-    # # ['businesses'][0]['id']
-
+    business_id = search_request['businesses'][0]['id']
+    
+    business_details = requests.get(BUSINESS_URL+business_id, headers=HEADER)
+    data = business_details.json()
 
     # # return redirect(f"/restaurant/{bus_id}")
-    return search_request.json() 
-    # return ""
+    # return redirect(f"/restaurant/<business_id>")
+    # return search_request.json() 
+    
+    return data
+
 #############################################################################
 
 @app.route("/restaurant/google_detail")
@@ -151,18 +156,16 @@ def find_restaurant_detail_via_google():
 
 #############################################################################
 
-@app.route("/restaurant/<business_id>")
-def find_restaurant_detail_via_yelp(business_id):
-    """Query the Yelp Business API by a business ID."""
+# @app.route("/restaurant/<business_id>")
+# def find_restaurant_detail_via_yelp(business_id):
+#     """Query the Yelp Business API by a business ID."""
     
-    business_details = requests.get(BUSINESS_URL+business_id, headers=HEADER)
-    data = business_details.json()
+#     business_details = requests.get(BUSINESS_URL+business_id, headers=HEADER)
+#     data = business_details.json()
 
-    return render_template('homepage.html')
-                            # pformat=pformat,
-                            # data=data)
-
-
+#     return render_template('homepage.html')
+#                             # pformat=pformat,
+#                             # data=data)
 
 #############################################################################
 
