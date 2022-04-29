@@ -32,7 +32,7 @@ app.jinja_env.undefined = StrictUndefined
 # For Yelp Fusion API
 # Search by term and location:
 SEARCH_URL = 'https://api.yelp.com/v3/businesses/search' 
-#Business ID will come after slash, search by business ID.
+# Business ID will come after slash, search by business ID.
 BUSINESS_URL = 'https://api.yelp.com/v3/businesses/'##
 REVIEWS = '/reviews'
 HEADER = {}
@@ -85,7 +85,7 @@ def process_login():
     if not user or user.password != password:
         flash("The email or password you entered was incorrect.")
     else:
-        # Log in user by storing the user's email in session
+        #Log in user by storing the user's email in session
         session["logged_in_user_email"] = user.email
         flash(f"Welcome back, {user.fname}!")
 
@@ -121,11 +121,14 @@ def user_profile(user_id):
 @app.route("/restaurant-search", methods = ["POST"])
 def find_restaurant_via_yelp():
     """Search for restaurant from Yelp and return business_ID. Query the Yelp Business API by a business ID."""
-    # similar to the submit-order.js from AJAX review
+    #Similar to the submit-order.js from AJAX review
 
-    term = request.json.get("rname") #These are the keys in the JSON dict, passed via AJAX request
+    #These are the keys in the JSON dict, passed via AJAX request
+    term = request.json.get("rname")
     location = request.json.get("city")
-    limit = 1 # A search will return 1 restaurant
+
+    #A search will return 1 restaurant
+    limit = 1
 
     url_params = {
         'term': term,
@@ -138,12 +141,13 @@ def find_restaurant_via_yelp():
     
     business_details = requests.get(BUSINESS_URL+business_id, headers=HEADER).json()
     reviews = requests.get(BUSINESS_URL+business_id+REVIEWS, headers=HEADER).json()
-    #reviews_only = reviews['reviews'][0]['rating']
 
+    #This is the combined dictionary of both business_details and reviews dictionaries
     business_details.update(reviews)
- 
+    
+    #reviews_only = reviews['reviews'][0]['rating']
     #print(business_details)
-    # return redirect(f"/restaurant/{bus_id}")
+    #return redirect(f"/restaurant/{bus_id}")
     return business_details
 
 #############################################################################
@@ -183,8 +187,7 @@ def all_favorited_restuarants(user_id):
     
     return render_template("user_profile.html", )
 
-
-
+#############################################################################
 
 if __name__ == "__main__":
     connect_to_db(app)
