@@ -15,8 +15,8 @@
   <form id="search-form" >
     <!-- method="GET" action="/restaurant-search">  no longer needed, before AJAX was used -->
     
-    <p>Enter restaurant name: <input type="text" name="rname" id="rname"></p>
-    <p>Enter city: <input type="text" name="city" id="city"></p>
+    <p>Enter restaurant name: <input type="text" name="rname" id="rname" value="Flour Box"></p>
+    <p>Enter city: <input type="text" name="city" id="city" value="Seattle"></p>
     <p><input type="submit"></p>
   
   </form>
@@ -25,12 +25,12 @@
 </section>
 
 <section>
-  <div id="results-as-json">
-    <h4>Results as JSON</h4>
-    <pre>{{ data }}</pre>
+  <div id="businessdetails-results-as-json">
+    <h4>Results</h4>
     <b id="restaurant-result">Expect JSON Result Here</b>
   </div>
 </section>
+
 
 <section>
   <h3>Log In</h3>
@@ -64,5 +64,5 @@
 </section>
 
 
-<script src="/static/js/yelp.js"></script>
+<script src="/static/js/yelp-busdetails.js"></script>
 {% endblock %}

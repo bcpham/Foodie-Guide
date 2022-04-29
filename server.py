@@ -6,7 +6,7 @@ from model import connect_to_db, db
 from pprint import pformat
 
 import os
-# import crud
+import crud
 import json
 import pprint
 import requests
@@ -34,6 +34,7 @@ app.jinja_env.undefined = StrictUndefined
 SEARCH_URL = 'https://api.yelp.com/v3/businesses/search' 
 #Business ID will come after slash, search by business ID.
 BUSINESS_URL = 'https://api.yelp.com/v3/businesses/'##
+REVIEWS = '/reviews'
 HEADER = {}
 HEADER["Authorization"] = "Bearer " + YELP_API_KEY
 
@@ -119,7 +120,7 @@ def user_profile(user_id):
 
 @app.route("/restaurant-search", methods = ["POST"])
 def find_restaurant_via_yelp():
-    """Search for restaurant from Yelp and return business_ID."""
+    """Search for restaurant from Yelp and return business_ID. Query the Yelp Business API by a business ID."""
     # similar to the submit-order.js from AJAX review
 
     term = request.json.get("rname") #These are the keys in the JSON dict, passed via AJAX request
@@ -133,39 +134,25 @@ def find_restaurant_via_yelp():
     }
 
     search_request = requests.get(SEARCH_URL, headers=HEADER, params=url_params).json()
-    
-    # # bus_id = search_request.json()
     business_id = search_request['businesses'][0]['id']
     
-    business_details = requests.get(BUSINESS_URL+business_id, headers=HEADER)
-    data = business_details.json()
+    business_details = requests.get(BUSINESS_URL+business_id, headers=HEADER).json()
+    reviews = requests.get(BUSINESS_URL+business_id+REVIEWS, headers=HEADER).json()
+    #reviews_only = reviews['reviews'][0]['rating']
 
-    # # return redirect(f"/restaurant/{bus_id}")
-    # return redirect(f"/restaurant/<business_id>")
-    # return search_request.json() 
-    
-    return data
-
-#############################################################################
-
-@app.route("/restaurant/google_detail")
-def find_restaurant_detail_via_google():
-    """Return restaurant details from Google."""
-
-    pass
+    business_details.update(reviews)
+ 
+    print(business_details)
+    # return redirect(f"/restaurant/{bus_id}")
+    return business_details
 
 #############################################################################
 
-# @app.route("/restaurant/<business_id>")
-# def find_restaurant_detail_via_yelp(business_id):
-#     """Query the Yelp Business API by a business ID."""
-    
-#     business_details = requests.get(BUSINESS_URL+business_id, headers=HEADER)
-#     data = business_details.json()
+# @app.route("/restaurant/google_detail")
+# def find_restaurant_detail_via_google():
+#     """Return restaurant details from Google."""
 
-#     return render_template('homepage.html')
-#                             # pformat=pformat,
-#                             # data=data)
+#     pass
 
 #############################################################################
 
