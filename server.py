@@ -32,8 +32,9 @@ app.jinja_env.undefined = StrictUndefined
 # For Yelp Fusion API
 # Search by term and location:
 SEARCH_URL = 'https://api.yelp.com/v3/businesses/search' 
+
 # Business ID will come after slash, search by business ID.
-BUSINESS_URL = 'https://api.yelp.com/v3/businesses/'##
+BUSINESS_URL = 'https://api.yelp.com/v3/businesses/'#business ID
 REVIEWS = '/reviews'
 HEADER = {}
 HEADER["Authorization"] = "Bearer " + YELP_API_KEY
