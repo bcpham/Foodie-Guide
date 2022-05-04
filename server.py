@@ -52,7 +52,15 @@ def homepage():
                             data=data)
 #############################################################################
 
-@app.route("/users", methods=["POST"])
+@app.route("/create-account")
+def create_account():
+    """Shows Create Account page."""
+    
+    return render_template("create_account.html")
+
+#############################################################################
+
+@app.route("/create-account", methods=["POST"])
 def register_user():
     """Create a new user."""
 
@@ -68,9 +76,9 @@ def register_user():
         user = crud.create_user(fname, lname, email, password)
         db.session.add(user)
         db.session.commit()
-        flash(f"Account created for {user.fname}! Please log in.")
+        flash(f"Account created for {user.fname}! Return to home page to log in.")
 
-    return redirect("/")
+    return render_template("/create_account.html")
 
 #############################################################################
 
@@ -87,8 +95,9 @@ def process_login():
         flash("The email or password you entered was incorrect.")
     else:
         #Log in user by storing the user's email in session
-        session["logged_in_user_email"] = user.email
-        flash(f"Welcome back, {user.fname}!")
+        #session["logged_in_user_email"] = user.email
+        session["logged_in_user_id"] = user.user_id
+        flash(f"Currently logged in: {user.fname}!")
 
     return redirect("/")
 
@@ -98,24 +107,9 @@ def process_login():
 def process_logout():
     """Process user logout"""
 
-    del session["logged_in_user_email"]
+    del session["logged_in_user_id"]
     flash("Logged out.")
     return redirect("/")
-
-#############################################################################
-
-@app.route("/user_favorites/<user_id>")
-def user_profile(user_id):
-    """View the user's My Favorites page."""
-
-    logged_in_email = session.get("logged_in_user_email")
-    
-    if logged_in_email is None:
-        flash("You must log in to enter My Favorites.")
-    else:
-        user = crud.get_user_by_id(user_id)
-
-    return render_template("user_favorites.html", user=user)
 
 #############################################################################
 
@@ -153,40 +147,55 @@ def find_restaurant_via_yelp():
 
 #############################################################################
 
-# @app.route("/restaurant/google_detail")
-# def find_restaurant_detail_via_google():
-#     """Return restaurant details from Google."""
+@app.route("/user-favorites")
+def user_favorites():
+    """Show user's My favorites page"""
 
-#     pass
+    user = crud.get_user_by_user_id(session["logged_in_user_id"])
+    favorites = crud.get_favorites_by_user_id(session["logged_in_user_id"])
 
-#############################################################################
+    return render_template("user_favorites.html", user=user, favorites=favorites)
 
-@app.route("/profile/<user_id>/favorites")
+#############################################################################    
+
+@app.route("/add-favorites")
 def create_favorite():
     """Create a favorite resaurant by the user."""
 
-    logged_in_email = session.get("user_email")
-   
-    user = crud.get_user_by_email(logged_in_email)
-    restaurant = crud.get_restaurant_by_id(restaurant_id)
+    #GET Yelp Fusion API's id for restaurant.
+    #This value is passed from the hidden value of "Bookmark this restaurant" form
+    revealed_yelp_rest_id = request.args.get('hidden-rest-id')
+    rname = request.args.get('hidden-rest-name')
     
-    favorite = crud.create_favorite(user, restaurant, comment)
-    db.session.add(favorite)
-    db.session.commit()
-
-    flash(f"You just favorited {Restaurant.rname}.")
-
-    return render_template("user_profile.html", restaurant=restaurant)
-
-#############################################################################
-
-@app.route("/profile/<user_id>/favorites/all")
-def all_favorited_restuarants(user_id):
-    """Return all favorited restaurants by the user."""
+    # print("*****************")
+    # print(revealed_rest_id)
+    # print("*****************")
+    # print(rname)
     
-    all_favorites = crud.get_favorite_by_user_id(user_id)
-    
-    return render_template("user_profile.html", )
+    if "logged_in_user_id" in session: 
+        user = crud.get_user_by_user_id(session["logged_in_user_id"])
+
+        #Add searched restaurant to the database if doesn't exist
+        restaurant = crud.get_restaurant_by_yelp_id(revealed_yelp_rest_id)
+        if restaurant == None:
+            restaurant = crud.create_restaurant(rname, revealed_yelp_rest_id)
+            db.session.add(restaurant)
+            db.session.commit()
+
+        #Finally, bookmark the searched restaurant!
+        favorite = crud.get_favorite_by_user_and_rest_id(user.user_id, restaurant.restaurant_id)
+        if favorite == None:
+            favorite = crud.create_favorite(user, restaurant, comment="")
+            db.session.add(favorite)
+            db.session.commit()
+            flash(f"You just favorited {restaurant.rname}!")
+        else:
+            flash(f"You already favorited {restaurant.rname}!")
+    else:
+        flash("You must be logged in to bookmark this restaurant!")
+        return redirect("/")
+
+    return render_template("homepage.html", user=user, restaurant=restaurant, favorite=favorite)
 
 #############################################################################
 

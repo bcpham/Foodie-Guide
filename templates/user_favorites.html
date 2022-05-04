@@ -1,10 +1,25 @@
 {% extends 'base.html' %}
-{% block title %}{{ user.email }}'s Profile Page{% endblock %}
+{% block title %}.::Foodie Guide::.{% endblock %}
 
 {% block body %}
 
-<h1>{{ user.email }}</h1>
 
 <h1>My Favorite Restaurants</h1>
+
+<h1>{{ user.fname }}</h1>
+
+<section>
+    <div>
+    
+      <ul id="user-favorite">
+      {% for fav in favorites %}
+        <li> {{ fav.restaurant.rname }} </li>
+      {% endfor %}
+      </ul>
+  
+    </div>
+</section>
+
+<script src="/static/js/bookmark.js"></script>
 
 {% endblock %}

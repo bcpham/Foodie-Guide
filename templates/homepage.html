@@ -12,7 +12,7 @@
 ></script> -->
 
 <section>
-  <h2>Restaurant Search</h2>
+  <h3>Restaurant Search</h3>
   <form id="search-form" >
     <!-- method="GET" action="/restaurant-search">  no longer needed, before AJAX was used -->
     
@@ -21,15 +21,24 @@
     <p><input type="submit"></p>
   
   </form>
-
-  
 </section>
+
+
+{% if session['logged_in_user_id'] is defined %}
+<section>
+
+  <form id="my-faves" action="/user-favorites">
+    <button type="submit">My Favorites</button>
+  </form>
+
+</section>
+{% endif %}
 
 <section>
   <div id="business-details-results">
     
     <b id="title-results"></b>
-    <b id="yelp-name"></b>
+    <p id="yelp-name"></p>
     <p id="yelp-address"></p>
     <p id="yelp-phone"></p>
     <p id="yelp-rating"></p>
@@ -41,32 +50,47 @@
     <b id="title-reviews"></b>
     <ol id="yelp-rev"></ol>
 
-
   </div>
 </section>
 
+{# This is hidden because user must search restaurant before favoriting it #}
+{# Condition is from yelp-busdetails.js #}
+<section>
+  <form id ="rest-fave" action ="/add-favorites" hidden>
 
+    <input type="submit" value="Bookmark this restaurant">
+    <input id="hidden-rest-id" name="hidden-rest-id" type="text" hidden value="">
+    <input id="hidden-rest-name" name="hidden-rest-name" type ="text" hidden value="">
+
+  </form>
+</section>
+
+{% if session['logged_in_user_id'] is not defined %}
 <section>
   <h3>Log In</h3>
     <form action="/login" method="POST">
       
-      <p>E-mail: <input type="text" name="email"></p>
-      <p>Password: <input type="password" name="password"></p>
+      <p>E-mail: <input type="text" name="email" value="test@test.com"></p>
+      <p>Password: <input type="password" name="password" value="test"></p>
       <p><input type="submit"></p>
     
     </form>
   </section>
+{% endif %}
 
+{% if session['logged_in_user_id'] is defined %}
 <section>
   <h3>Log Out</h3>
     <form action="/logout">
       <input type="submit" value="Log Out">
     </form>
 </section>
+{% endif %}
 
 <section>
-<h4>New User? Create an account to bookmark your favorite restaurants!</h4>
-  <form action="/users" method="POST">
+<h4>New User? Bookmark your favorite restaurants and <a href="/create-account">create an account</a> !</h4>
+
+<!-- <form action="/users" method="POST">
     
     <p>First name: <input type="text" name="fname"></p>
     <p>Last name: <input type="text" name="lname"></p>
@@ -74,9 +98,10 @@
     <p>Password: <input type="password" name="password"></p>
     <p><input type="submit"></p>
   
-  </form>
+  </form> -->
 </section>
 
 
 <script src="/static/js/yelp-busdetails.js"></script>
+
 {% endblock %}
