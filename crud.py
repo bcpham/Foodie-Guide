@@ -60,10 +60,10 @@ def get_favorites_by_user_id(user_id):
 
 def get_favorite_by_user_and_rest_id(user_id, rest_id):
     """Return all favorited restaurants by user."""
-    print("***********USER ID =")
-    print(user_id)
-    print("***********REST ID =")
-    print(rest_id)
+    # print("***********USER ID =")
+    # print(user_id)
+    # print("***********REST ID =")
+    # print(rest_id)
     return Favorite.query.filter(Favorite.restaurant_id == rest_id, Favorite.user_id == user_id).first()
 
 def get_favorite_by_user_and_yelp_id(user_id, yelp_id):

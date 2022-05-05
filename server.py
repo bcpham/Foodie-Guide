@@ -71,14 +71,17 @@ def register_user():
 
     user = crud.get_user_by_email(email)
     if user:
-        flash("This e-mail is already registered with another account. Try again.")
+        #flash("This e-mail is already registered with another account. Try again.")
+        
+        return render_template("/create_account.html", account="already-exists")
+
     else:
         user = crud.create_user(fname, lname, email, password)
         db.session.add(user)
         db.session.commit()
-        flash(f"Account created for {user.fname}! Return to home page to log in.")
+        #flash(f"Account created for {user.fname}! Return to home page to log in.")
 
-    return render_template("/create_account.html")
+        return render_template("/create_account.html", account="create", user=user)
 
 #############################################################################
 
@@ -115,8 +118,13 @@ def process_login():
 def process_logout():
     """Process user logout"""
 
+    #This clears the session of the user, which has the base 64 encoding
     del session["logged_in_user_id"]
-    flash("Logged out.")
+    
+    #I noticed that there was still a cookie (not able to encode) left
+    #This line completely clears cookies 
+    session.clear()
+
     return redirect("/")
 
 #############################################################################
