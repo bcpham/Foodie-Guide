@@ -4,12 +4,10 @@
 {% block body %}
 
 
-<div id="map"></div>
-  <p> /////////Future Google map goes here///////// </p>
-<!-- <script
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"
-  defer
-></script> -->
+<div id="map">
+
+</div>
+
 
 <section>
   <h3>Restaurant Search</h3>
@@ -24,15 +22,12 @@
 </section>
 
 
-{% if session['logged_in_user_id'] is defined %}
 <section>
-
-  <form id="my-faves" action="/user-favorites">
+  <form id="my-faves" action="/user-favorites" hidden>
     <button type="submit">My Favorites</button>
   </form>
-
 </section>
-{% endif %}
+
 
 <section>
   <div id="business-details-results">
@@ -56,36 +51,35 @@
 {# This is hidden because user must search restaurant before favoriting it #}
 {# Condition is from yelp-busdetails.js #}
 <section>
-  <form id ="rest-fave" action ="/add-favorites" hidden>
+  <form id="rest-fave" action="/add-favorites" hidden>
 
     <input type="submit" value="Bookmark this restaurant">
     <input id="hidden-rest-id" name="hidden-rest-id" type="text" hidden value="">
-    <input id="hidden-rest-name" name="hidden-rest-name" type ="text" hidden value="">
+    <input id="hidden-rest-name" name="hidden-rest-name" type="text" hidden value="">
 
   </form>
 </section>
 
-{% if session['logged_in_user_id'] is not defined %}
+
+
 <section>
-  <h3>Log In</h3>
-    <form action="/login" method="POST">
-      
-      <p>E-mail: <input type="text" name="email" value="test@test.com"></p>
-      <p>Password: <input type="password" name="password" value="test"></p>
+    <form id="login" action="/login" method="POST">
+      <h3>Log In</h3>
+      <p>E-mail: <input type="text" id="email" name="email" value="test@test.com"></p>
+      <p>Password: <input type="password" id="password" name="password" value="test"></p>
       <p><input type="submit"></p>
     
     </form>
   </section>
-{% endif %}
 
-{% if session['logged_in_user_id'] is defined %}
+
 <section>
-  <h3>Log Out</h3>
-    <form action="/logout">
+    <form id="logout" action="/logout" hidden>
+      <h3>Log Out</h3>
       <input type="submit" value="Log Out">
     </form>
 </section>
-{% endif %}
+
 
 <section>
 <h4>New User? Bookmark your favorite restaurants and <a href="/create-account">create an account</a> !</h4>
@@ -103,5 +97,5 @@
 
 
 <script src="/static/js/yelp-busdetails.js"></script>
-
+<script src="/static/js/login.js"></script>
 {% endblock %}

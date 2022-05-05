@@ -56,7 +56,7 @@ def get_restaurant_by_yelp_id(yelp_restaurant_id):
 def get_favorites_by_user_id(user_id):
     """Return all favorited restaurants by user."""
 
-    return Favorite.query.filter(User.user_id == user_id).all()
+    return Favorite.query.filter(Favorite.user_id == user_id).all()
 
 def get_favorite_by_user_and_rest_id(user_id, rest_id):
     """Return all favorited restaurants by user."""

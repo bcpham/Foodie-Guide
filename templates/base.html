@@ -8,15 +8,9 @@
     <title>
       {% block title %}{% endblock %}
     </title>
-    
-  
-    
+
     <link rel="stylesheet" href="static/css/styles.css">
     
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <link rel="stylesheet" type="text/css" href="../static/css/style.css" />
-    <script type="module" src="../static/js/google.js"></script>
-
     {% block head %}{% endblock %}
   </head>
 
@@ -25,14 +19,21 @@
     <h1>f o o d i e  g u i d e</h1>
       <p>Serving the ultimate resource so you don't get hangry.</p>
   
+    <!-- Not using flash anymore -->
     <!-- use Flask’s flash function to display messages that provide feedback to the user -->
-    {% for msg in get_flashed_messages() %}
-      <p class="flash-msg">
-        {{ msg }}
-      </p>
-    {% endfor %}
+    {# {% for msg in get_flashed_messages() %} #}
+    {#  <p class="flash-msg"> #}
+    {#    {{ msg }} #}
+    {#  </p> #}
+    {# {% endfor %} #}
+
+    <!-- Using DOM to show "flash messages" instead -->
+    <div>
+      <p id="stat-message" value=""></p>
+    </div>
     
     {% block body %}{% endblock %}
+    
     {% block after_body %}{% endblock %}
   
   </body>

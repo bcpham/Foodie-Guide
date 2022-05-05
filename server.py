@@ -86,20 +86,28 @@ def register_user():
 def process_login():
     """Process user login"""
 
-    email = request.form.get("email")
-    password = request.form.get("password")
+    #Don't need this for AJAX
+    # email = request.form.get("email")
+    # password = request.form.get("password")
 
+    #Need this for AJAX
+    email = request.json.get("email")
+    password = request.json.get("password")
+    
     user = crud.get_user_by_email(email)
 
     if not user or user.password != password:
-        flash("The email or password you entered was incorrect.")
+        
+        return "False"
     else:
-        #Log in user by storing the user's email in session
-        #session["logged_in_user_email"] = user.email
+        #Log in user by storing the user's user_id in session
         session["logged_in_user_id"] = user.user_id
-        flash(f"Currently logged in: {user.fname}!")
+        return "True"
+        
+        #return f"Currently logged in: {user.fname}!"
 
-    return redirect("/")
+    #Don't need this for AJAX
+    #return redirect("/")
 
 #############################################################################
 
