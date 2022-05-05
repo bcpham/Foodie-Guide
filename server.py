@@ -97,8 +97,8 @@ def process_login():
     user = crud.get_user_by_email(email)
 
     if not user or user.password != password:
-        
         return "False"
+    
     else:
         #Log in user by storing the user's user_id in session
         session["logged_in_user_id"] = user.user_id
@@ -166,19 +166,21 @@ def user_favorites():
 
 #############################################################################    
 
-@app.route("/add-favorites")
+@app.route("/add-favorites", methods=['POST'])
 def create_favorite():
     """Create a favorite resaurant by the user."""
 
     #GET Yelp Fusion API's id for restaurant.
     #This value is passed from the hidden value of "Bookmark this restaurant" form
-    revealed_yelp_rest_id = request.args.get('hidden-rest-id')
-    rname = request.args.get('hidden-rest-name')
     
-    # print("*****************")
-    # print(revealed_rest_id)
-    # print("*****************")
-    # print(rname)
+    #Before AJAX
+    #revealed_yelp_rest_id = request.args.get('hidden-rest-id')
+    #rname = request.args.get('hidden-rest-name')
+
+    #After AJAX
+    revealed_yelp_rest_id = request.json.get("revealed_yelp_rest_id")
+    rname = request.json.get("rname")
+
     
     if "logged_in_user_id" in session: 
         user = crud.get_user_by_user_id(session["logged_in_user_id"])
@@ -196,14 +198,23 @@ def create_favorite():
             favorite = crud.create_favorite(user, restaurant, comment="")
             db.session.add(favorite)
             db.session.commit()
-            flash(f"You just favorited {restaurant.rname}!")
+            #flash(f"You just favorited {restaurant.rname}!")
+            return "True"
+        
         else:
-            flash(f"You already favorited {restaurant.rname}!")
-    else:
-        flash("You must be logged in to bookmark this restaurant!")
-        return redirect("/")
+            #flash(f"You already favorited {restaurant.rname}!")
+            return "already-favorited"
+    
 
-    return render_template("homepage.html", user=user, restaurant=restaurant, favorite=favorite)
+    else:
+        return "False"
+
+        #Before AJAX
+        #flash("You must be logged in to bookmark this restaurant!")
+        #return redirect("/")
+
+    #Before AJAX
+    #return render_template("homepage.html", user=user, restaurant=restaurant, favorite=favorite)
 
 #############################################################################
 
