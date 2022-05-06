@@ -26,6 +26,7 @@ def create_favorite(user, restaurant, comment):
 
     return favorite
 
+
 #############################################################################
 #Handler functions for queries:
 #############################################################################
@@ -72,6 +73,18 @@ def get_favorite_by_user_and_yelp_id(user_id, yelp_id):
     return Favorite.query.filter(Favorite.restaurant.has(yelp_id=yelp_id), Favorite.user_id == user_id).one()
     
 #############################################################################
+#Deleting a favorite by user
+#############################################################################
+
+# def delete_favorite_by_user_id(user_id, restaurant_id):
+#     """Delete a selected favorite by user."""
+#     #query
+    
+#     fave_to_delete = Favorite.query.filter(Favorite.user_id == user_id, Favorite.restaurant_id == rest_id).first()
+#     db.session.delete(fave_to_delete)
+#     db.session.commit()
+
+#     return None 
 
 if __name__ == "__main__":
     from server import app

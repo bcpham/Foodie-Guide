@@ -4,25 +4,43 @@
 {% block body %}
 
 
-<h1>My Favorite Restaurants</h1>
-
-<h1>{{ user.fname }}</h1>
+<h1>{{user.fname}}'s Bookmarked Restaurants</h1>
 
 <section>
     <div>
-    
+      
       <ul id="user-favorite">
-      {% for fav in favorites %}
-        <li> {{ fav.restaurant.rname }} </li>
-      {% endfor %}
+        {% for fav in favorites %}
+          <li id="li-fav-{{fav.restaurant.restaurant_id}}"> {{ fav.restaurant.rname }} </li>
+        {% endfor %}
       </ul>
+
+      <form id="user-favorite-form" hidden>
+        {% for fav in favorites %}
+          <div id="rest-div-{{ fav.restaurant.restaurant_id }}">
+            <input name="favorites" type="radio" id="{{ fav.restaurant.rname }}" value="{{ fav.restaurant.restaurant_id }}">
+            <label for="{{ fav.restaurant.rname }}">{{ fav.restaurant.rname }}</label><br/>
+          </div>
+        {% endfor %}
+
+        <button id="fav-cancel-button">Cancel</button>
+        <button id="fav-delete-button" type="submit">Delete</button>
+      </form>
   
     </div>
+</section>
+
+<section>
+  <form id="edit-mode" action="/delete-favorite">
+    <button type="submit">Edit</button>
+  </form>
 </section>
 
 <section>
   <p>Returning to <a href="/">home page</a>.</p>
 </section>
 
+
+<script src="/static/js/del-fave.js"></script>
 
 {% endblock %}

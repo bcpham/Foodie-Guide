@@ -226,6 +226,33 @@ def create_favorite():
 
 #############################################################################
 
+@app.route("/delete-favorite", methods=['POST'])
+def delete_favorite():
+    """Delete a favorite restaurant by the user."""
+
+
+    user_id = session["logged_in_user_id"]
+    restaurant_id = request.json.get("userFavToDelete")
+    rnameToDelete = request.json.get("rnameToDelete")
+    
+    fave_to_delete = crud.get_favorite_by_user_and_rest_id(user_id, restaurant_id)
+
+    if fave_to_delete:
+        db.session.delete(fave_to_delete)
+        db.session.commit()
+
+        return {"success": True,
+                "restaurant_id": restaurant_id,
+                "rname": rnameToDelete,
+                "msg": f"Successfully deleted {rnameToDelete} from your bookmarks!"}
+    else:
+        return {"success": False,
+                "restaurant_id": restaurant_id,
+                "rname": rnameToDelete,
+                "msg": f"An error occurred while deleting {rnameToDelete}. Please try again."}
+
+#############################################################################
+
 if __name__ == "__main__":
     connect_to_db(app)
     app.run(host="0.0.0.0", debug=True)

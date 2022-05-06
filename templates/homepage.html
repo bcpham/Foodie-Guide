@@ -19,13 +19,20 @@
   </form>
 </section>
 
+{% if session['logged_in_user_id'] is defined %}
+<section>
+  <form id="my-faves" action="/user-favorites">
+    <button type="submit">My Favorites</button>
+  </form>
+</section>
 
+{% else %}
 <section>
   <form id="my-faves" action="/user-favorites" hidden>
     <button type="submit">My Favorites</button>
   </form>
 </section>
-
+{% endif %}
 
 <section>
   <div id="business-details-results">

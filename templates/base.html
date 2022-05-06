@@ -17,16 +17,9 @@
   <body>
     <h1>f o o d i e  g u i d e</h1>
       <p>Serving the ultimate resource so you don't get hangry.</p>
-  
-    <!-- Not using flash anymore -->
-    <!-- use Flask’s flash function to display messages that provide feedback to the user -->
-    {# {% for msg in get_flashed_messages() %} #}
-    {#  <p class="flash-msg"> #}
-    {#    {{ msg }} #}
-    {#  </p> #}
-    {# {% endfor %} #}
 
-    <!-- Using DOM to show "flash messages" instead -->
+
+    <!-- Using DOM to show "flash messages" -->
     <div>
       <p id="stat-message" value=""></p>
     </div>
