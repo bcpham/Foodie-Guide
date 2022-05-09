@@ -55,6 +55,28 @@ def __repr__(self):
 
 #############################################################################
 
+def example_data():
+    """Create sample data."""
+
+    # In case this is run more than once, empty out existing data
+    User.query.delete()
+    Favorite.query.delete()
+    Restaurant.query.delete()
+
+    # Add sample users, restaurants, and favorites
+    u1 = User(fname="Matthew", lname="D", email="test01@test.com", password="test")
+    u2 = User(fname="BC", lname="Pham", email="test02@test.com", password="test")
+
+    r1 = Restaurant(rname="The Restaurant 1", yelp_id="123", place_id="")
+    r2 = Restaurant(rname="The Restaurant 2", yelp_id="456", place_id="")
+
+    f1 = Favorite(user_id="1", restaurant_id="1", comment="")
+    f2 = Favorite(user_id="2", restaurant_id="2", comment="")
+
+    db.session.add_all([u1,u2,r1,r2,f1,f2])
+    db.session.commit()
+
+#############################################################################
 def connect_to_db(flask_app, db_uri="postgresql:///food", echo=True):
     flask_app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
     flask_app.config["SQLALCHEMY_ECHO"] = echo
