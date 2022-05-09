@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}.::Foodie Guide::.{% endblock %}
+
+{% block body %}
+
+
+{% if account is defined and account=="already-exists" %}
+  <div>
+    <p>This e-mail is already registered with another account. Try again.</p>
+  </div>
+{% elif account is defined and account=="create" %}
+  <div>
+    <p>Account created for {{user.fname}}! Return to <a href="/">home page</a> to log in.</p>
+  </div>
+
+{% endif %}
+
+
+<h2>Create an Account</h2>
+
+<form action="/create-account" method="POST">
+    
+  <p>First name: <input type="text" name="fname"></p>
+  <p>Last name: <input type="text" name="lname"></p>
+  <p>E-mail: <input type="text" name="email"></p>
+  <p>Password: <input type="password" name="password"></p>
+  <p><input type="submit" value="Create"></p>
+  
+</form>
+
+<section>
+    <p>Log in by returning to <a href="/">home page</a>.</p>
+</section>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+
+{"open": [
+        {
+          "day": 3,
+          "end": "1300",
+          "is_overnight": false,
+          "start": "1000"
+        },
+        {
+          "day": 4,
+          "end": "1300",
+          "is_overnight": false,
+          "start": "1000"
+        },
+        {
+          "day": 5,
+          "end": "1300",
+          "is_overnight": false,
+          "start": "1000"
+        },
+        {
+          "day": 6,
+          "end": "1300",
+          "is_overnight": false,
+          "start": "1000"
+        }
+  ]
+}

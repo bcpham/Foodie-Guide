@@ -1,0 +1,58 @@
+{
+    "businesses": [
+      {
+        "alias": "the-flour-box-seattle",
+        "categories": [
+          {
+            "alias": "bakeries",
+            "title": "Bakeries"
+          },
+          {
+            "alias": "coffee",
+            "title": "Coffee & Tea"
+          },
+          {
+            "alias": "donuts",
+            "title": "Donuts"
+          }
+        ],
+        "coordinates": {
+          "latitude": 47.55225,
+          "longitude": -122.27775
+        },
+        "display_phone": "",
+        "distance": 9216.886006669536,
+        "id": "AzVrOOc0lbNXcoTI5pSNvw",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/hw2NZhN8EHo4CkWuDSIvgA/o.jpg",
+        "is_closed": false,
+        "location": {
+          "address1": "5520 Rainier Ave S",
+          "address2": null,
+          "address3": null,
+          "city": "Seattle",
+          "country": "US",
+          "display_address": [
+            "5520 Rainier Ave S",
+            "Seattle, WA 98118"
+          ],
+          "state": "WA",
+          "zip_code": "98118"
+        },
+        "name": "The Flour Box",
+        "phone": "",
+        "rating": 4.5,
+        "review_count": 248,
+        "transactions": [
+          
+        ],
+        "url": "https://www.yelp.com/biz/the-flour-box-seattle?adjust_creative=ItY8_G83fxpaVl29BURMUA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ItY8_G83fxpaVl29BURMUA"
+      }
+    ],
+    "region": {
+      "center": {
+        "latitude": 47.62541904760501,
+        "longitude": -122.33551025390625
+      }
+    },
+    "total": 17
+  }
