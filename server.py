@@ -95,9 +95,15 @@ def process_login():
 
     #Need this for AJAX
     email = request.json.get("email")
+
     password = request.json.get("password")
+
+    print("email: ", email)
+    print("password: ", password)
     
     user = crud.get_user_by_email(email)
+
+    print("user: ", user)
 
     if not user or user.password != password:
         return "False"

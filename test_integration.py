@@ -20,11 +20,12 @@ class FoodyGuideIntegrationTest(TestCase):
         self.assertIn(b'<h3>Log In</h3>', result.data)
 
 #Check if AJAX means testing the login page isn't possible with flask testing
-    # def test_login(self):
-    #     result = self.client.post("/login",
-    #                                 data={"e-mail": "test@test.com","password": "test"},
-    #                                 follow_redirects=True)
-    #     self.assertIn(b"Currently logged in as test@test.com!", result.data)
+    def test_login(self):
+        result = self.client.post("/login",
+                                    json={"email": "test@test.com","password": "test"},
+                                    )
+        print(result.data)
+        # self.assertIn(b"Currently logged in as test@test.com!", result.data)
 
     
 if __name__ == '__main__':
