@@ -38,5 +38,3 @@ Link: https://drive.google.com/file/d/16QfFvefSKAFCE3Mzg08B_r5fPlqjcmN2/view?usp
 
 1) Potentially to work with local restaurants if they could provide special discounts for Foodie Seattle users
 2) Mobile app friendly
-
-image.png
