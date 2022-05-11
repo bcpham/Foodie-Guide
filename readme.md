@@ -9,7 +9,7 @@ Foodie Guide will be a web application that:
 
 2) Generates a recommended restaurant base on the radius of location, cuisine, that the user selects.
 
-## Technologies Required
+## Technologies Implemented
 
 - Google Places API: https://developers.google.com/maps/documentation/places/web-service/overview
 - Yelp Fusion API: https://www.yelp.com/developers/documentation/v3/get_started
@@ -23,8 +23,7 @@ Link: https://drive.google.com/file/d/16QfFvefSKAFCE3Mzg08B_r5fPlqjcmN2/view?usp
 ### MVP
 
 1) Log in/out feature to maintain personalized experience (to bookmark restaurants in NTH) 
-2) Allowing users to search any restaurant they want, collect information from Yelp to display attributes
-   (for business hours, ratings, etc.) (Form, for user’s input)
+2) Allowing users to search any restaurant they want, collect information from Yelp to display attributes (for business hours, ratings, etc.) (Form, for user’s input)
 3) Display 3 most recent reviews from Yelp (double check parameters)
 
 ### 2.0
@@ -39,5 +38,3 @@ Link: https://drive.google.com/file/d/16QfFvefSKAFCE3Mzg08B_r5fPlqjcmN2/view?usp
 
 1) Potentially to work with local restaurants if they could provide special discounts for Foodie Seattle users
 2) Mobile app friendly
-
-<script src="https://gist.github.com/bcpham/145ef52c28eabbdbfce156fa32bffe96.js"></script>
