@@ -125,11 +125,13 @@ def process_logout():
     """Process user logout"""
 
     #This clears the session of the user, which has the base 64 encoding
-    del session["logged_in_user_id"]
+
+    if "logged_in_user_id" in session:
+        del session["logged_in_user_id"]
     
-    #I noticed that there was still a cookie (not able to encode) left
-    #This line completely clears cookies 
-    session.clear()
+        #I noticed that there was still a cookie (not able to encode) left
+        #This line completely clears cookies 
+        session.clear()
 
     return redirect("/")
 

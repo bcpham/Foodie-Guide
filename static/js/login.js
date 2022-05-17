@@ -31,8 +31,9 @@ loginButton.addEventListener('submit', (evt) => {
     } else {
         document.querySelector('#stat-message').innerHTML = `Currently logged in as ${email.value}!`;
         document.querySelector('#login').hidden = true;
+        // document.querySelector('#create-account-link').hidden = true;
         document.querySelector('#logout').hidden = false;
-        document.querySelector('#my-faves').hidden = false;
+        document.querySelector('#my-faves').innerHTML = 'my favorites'; 
     };
   });
 });    

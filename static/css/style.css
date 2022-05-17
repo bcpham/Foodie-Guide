@@ -1,0 +1,46 @@
+/* Styling for navigation bar */
+
+body {
+  margin: 0px;
+  font-family: Arial;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: grey;
+}
+
+/* Links go to the left side of nav bar */
+.topnav a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 14px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Hovering over a link in the nav bar */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+/* This part is for an active link in the nav bar */
+.topnav a.active {
+  background-color: #dc6f6f;
+  color: white;
+}
+
+/* Log in container goes to the right */
+.topnav .login-container {
+  float: right;
+  margin-right: 10px;
+}
+
+.topnav input[type=text], input[type=password], input[type=submit] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 15px;
+  width:120px;
+}
