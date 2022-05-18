@@ -16,66 +16,64 @@
   </head>
 
   <body>
-
     <nav class="topnav">
-      <div class="grid">
-        <div class="g-col-6">
-        <a class="active" href="/"> <img class="logo" src="/static/img/main-logo2.JPG"></a>
-        </div>
+      <div class="row">
+        <div class="col-6">
+          
+          <a class="active" href="/"> <img class="logo" src="/static/img/main-logo2.JPG"></a>
+          <a href="/">home</a>
+          <a href="/about">about</a>
+          <a href="/contact">contact</a>
+          
+          {% if session['logged_in_user_id'] is not defined %}
+          <a id="my-faves" href="/user-favorites"></a>
         
-        <div class="g-col-6">
-        <a href="/">home</a>
-        <a href="/about">about</a>
-        <a href="/contact">contact</a>
-        
-        </div>
-      </div>
-      
+          {% else %}
+          <a id="my-faves" href="/user-favorites">bookmarks</a>
 
+          {% endif %}
+        </div>
+
+        <div class="col-6">
         {% if session['logged_in_user_id'] is not defined %}
-        <div class="login-container">
-          <form id="login" action="/login" method="POST">
-            <input type="text" id="email" name="email" placeholder="E-mail" value="test@test.com">
-            <input type="password" id="password" name="password" placeholder="Password" value="test">
-            <input type="submit" value="Log In">
-          </form>
+          <div class="login-container">
+            <form id="login" action="/login" method="POST">
+              <input type="text" id="email" name="email" placeholder="E-mail" value="test@test.com">
+              <input type="password" id="password" name="password" placeholder="Password" value="test">
+              <input type="submit" value="Log In">
+            </form>
 
-          <form id="logout" action="/logout" hidden>
-            <input type="submit" value="Log Out">
-          </form>
-        </div>
-        <a hidden id="my-faves" href="/user-favorites"></a>
+            <form id="logout" action="/logout" hidden>
+              <input type="submit" value="Log Out">
+            </form>
+          </div>
         
-      {% else %}
-      <div class="login-container">
-        <form id="login" action="/login" method="POST" hidden>
-          <input type="text" id="email" name="email" placeholder="E-mail" value="test@test.com">
-          <input type="password" id="password" name="password" placeholder="Password" value="test">
-          <input type="submit" value="Log In">
-        </form>
+        {% else %}
+          <div class="login-container">
+            <form id="login" action="/login" method="POST" hidden>
+              <input type="text" id="email" name="email" placeholder="E-mail" value="test@test.com">
+              <input type="password" id="password" name="password" placeholder="Password" value="test">
+              <input type="submit" value="Log In">
+            </form>
 
-        <form id="logout" action="/logout">
-          <input type="submit" value="Log Out">
-        </form>
-      </div>
-
-      <a id="my-faves" href="/user-favorites">my favorites</a>
-
-      {% endif %}
+            <form id="logout" action="/logout">
+              <input type="submit" value="Log Out">
+            </form>
+          </div>
+        {% endif %}
+        </div>
+      </div>    
     </nav>
 
-    
     <!-- Using DOM to show "flash messages" -->
     <div>
-      <p id="stat-message" value=""></p>
+      <p style="text-align:right" id="stat-message" value=""></p>
     </div>
     
     {% block body %}{% endblock %}
     
     {% block after_body %}{% endblock %}
 
-
-  
     <script src="/static/js/login.js"></script>
   </body>
 </html>

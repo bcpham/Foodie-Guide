@@ -3,8 +3,9 @@
 
 {% block body %}
 
-
-<div class="newuser">New User? Bookmark your favorite restaurants and <a href="/create-account">create an account</a>!</div>
+{% if session['logged_in_user_id'] is not defined %}
+<div id="newuser" style="text-align:right">New User? Bookmark your favorite restaurants and <a href="/create-account">create an account</a>!</div>
+{% endif %}
 
 <section>
   <h3>Restaurant Search</h3>
@@ -107,7 +108,7 @@
 
 
 <script src="/static/js/yelp-busdetails.js"></script>
-<!-- <script src="/static/js/login.js"></script> -->
+<script src="/static/js/login.js"></script>
 <script src="/static/js/bookmark.js"></script>
 
 {% endblock %}

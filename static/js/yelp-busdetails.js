@@ -52,7 +52,7 @@ searchForm.addEventListener('submit', (evt) => {
       //Create hmtl elements and insert into the dom
       document.querySelector('#title-results').innerHTML = 'Results:';
       document.querySelector('#yelp-pic').src = details['image_url'];
-      document.querySelector('#yelp-pic').style="height: 150px;"
+      document.querySelector('#yelp-pic').style="height: 300px;"
       document.querySelector('#yelp-name').innerHTML = 'Name: ' + name;
       document.querySelector('#yelp-address').innerHTML = 'Address: ' + address;
       document.querySelector('#yelp-phone').innerHTML = 'Phone: ' + phone;
