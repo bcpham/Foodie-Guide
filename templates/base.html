@@ -15,32 +15,36 @@
     {% block head %}{% endblock %}
   </head>
 
-
   <body>
 
     <nav class="topnav">
-      <a class="active" href="/">f o o d i e g u i d e</a>
-      <a href="/about">about</a>
-      <a href="/contact">contact</a>
-      
-      {% if session['logged_in_user_id'] is defined %}
-        <a id="my-faves" href="/user-favorites">my favorites</a>
-      {% else %}
-        <a id="my-faves" href="/user-favorites" hidden></a>
-      {% endif %}
-
-      {% if session['logged_in_user_id'] is not defined %}
-      <div class="login-container">
-        <form id="login" action="/login" method="POST">
-          <input type="text" id="email" name="email" placeholder="E-mail" value="test@test.com">
-          <input type="password" id="password" name="password" placeholder="Password" value="test">
-          <input type="submit" value="Log In">
-        </form>
-
-        <form id="logout" action="/logout" hidden>
-          <input type="submit" value="Log Out">
-        </form>
+      <div class="grid">
+        <div class="g-col-6">
+        <a class="active" href="/"> <img class="logo" src="/static/img/main-logo2.JPG"></a>
+        </div>
+        
+        <div class="g-col-6">
+        <a href="/">home</a>
+        <a href="/about">about</a>
+        <a href="/contact">contact</a>
+        
+        </div>
       </div>
+      
+
+        {% if session['logged_in_user_id'] is not defined %}
+        <div class="login-container">
+          <form id="login" action="/login" method="POST">
+            <input type="text" id="email" name="email" placeholder="E-mail" value="test@test.com">
+            <input type="password" id="password" name="password" placeholder="Password" value="test">
+            <input type="submit" value="Log In">
+          </form>
+
+          <form id="logout" action="/logout" hidden>
+            <input type="submit" value="Log Out">
+          </form>
+        </div>
+        <a hidden id="my-faves" href="/user-favorites"></a>
         
       {% else %}
       <div class="login-container">
@@ -55,19 +59,12 @@
         </form>
       </div>
 
+      <a id="my-faves" href="/user-favorites">my favorites</a>
+
       {% endif %}
-
-
     </nav>
 
-    <div>
-      <h1>f o o d i e  g u i d e</h1>
-    </div>
-
-    <div>
-      <p>Serving the ultimate resource so you don't get hangry.</p>
-    </div>
-
+    
     <!-- Using DOM to show "flash messages" -->
     <div>
       <p id="stat-message" value=""></p>

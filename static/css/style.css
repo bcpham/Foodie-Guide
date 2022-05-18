@@ -2,12 +2,14 @@
 
 body {
   margin: 0px;
-  font-family: Arial;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: white;
 }
 
 .topnav {
+  padding: 10px;
   overflow: hidden;
-  background-color: grey;
+  background-color: #955277;
 }
 
 /* Links go to the left side of nav bar */
@@ -15,21 +17,27 @@ body {
   float: left;
   display: block;
   color: white;
-  text-align: center;
-  padding: 14px 14px;
+  /* text-align: center; */
+  margin-top: 0px;
+  padding: 14px 20px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 20px;
 }
 
 /* Hovering over a link in the nav bar */
 .topnav a:hover {
-  background-color: #ddd;
+  /* background-color: #ddd; */
   color: black;
+  
 }
 /* This part is for an active link in the nav bar */
 .topnav a.active {
-  background-color: #dc6f6f;
-  color: white;
+  background-color: #955277;
+  /* color: #955277; */
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 0px;
+  padding: 0px;
 }
 
 /* Log in container goes to the right */
@@ -40,7 +48,8 @@ body {
 
 .topnav input[type=text], input[type=password], input[type=submit] {
   padding: 6px;
-  margin-top: 8px;
+  margin-top: 10px;
+  margin-bottom: 0px;
   font-size: 15px;
   width:120px;
 }
