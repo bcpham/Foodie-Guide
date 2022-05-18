@@ -60,6 +60,22 @@ def create_account():
 
 #############################################################################
 
+@app.route("/about")
+def about_me():
+    """Shows About Me page."""
+
+    return render_template("about.html")
+
+#############################################################################
+
+@app.route("/contact")
+def contact_me():
+    """Shows Contact page."""
+
+    return render_template("contact.html")
+
+#############################################################################
+
 @app.route("/create-account", methods=["POST"])
 def register_user():
     """Create a new user."""

@@ -1,6 +1,7 @@
 # Project Overview
-Work in progress
-![Picture5](https://user-images.githubusercontent.com/100656595/168739154-c09758fb-2766-43c3-a654-f45be328d90d.png)
+
+Work in progress:
+![Picture1](https://user-images.githubusercontent.com/100656595/168994805-c1c3dfdf-3946-4b6d-82b2-a6f475c7661e.png)
 
 
 During the pandemic, it has become difficult to reply on a single source for accurate information about restaurants.
@@ -41,6 +42,5 @@ Link: https://drive.google.com/file/d/16QfFvefSKAFCE3Mzg08B_r5fPlqjcmN2/view?usp
 1) Potentially to work with local restaurants if they could provide special discounts for Foodie Seattle users
 2) Mobile app friendly
 
-![Picture1](https://user-images.githubusercontent.com/100656595/168739500-04cc2362-f6ab-4375-83ef-7b714fd0f710.png)
-![Picture2](https://user-images.githubusercontent.com/100656595/168739526-ea64af1c-7c47-48a3-bb93-36bbc6f47783.png)
-![Picture4](https://user-images.githubusercontent.com/100656595/168739538-d26431fa-1473-44e9-bf0a-1dcb92191b94.png)
+![Picture2](https://user-images.githubusercontent.com/100656595/168995903-21b65a5e-c481-45f0-837e-eced3e495456.png)
+![Picture3](https://user-images.githubusercontent.com/100656595/168995943-66cf67cf-8fe5-495c-8ea4-0b417759b693.png)

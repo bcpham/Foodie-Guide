@@ -51,8 +51,12 @@ searchForm.addEventListener('submit', (evt) => {
       
       //Create hmtl elements and insert into the dom
       document.querySelector('#title-results').innerHTML = 'Results:';
-      document.querySelector('#yelp-pic').src = details['image_url'];
-      document.querySelector('#yelp-pic').style="height: 300px;"
+      document.querySelector('#yelp-pic1').src = details['photos'][0];
+      document.querySelector('#yelp-pic1').style="height: 300px;";
+      document.querySelector('#yelp-pic2').src = details['photos'][1];
+      document.querySelector('#yelp-pic2').style="height: 300px;";
+      document.querySelector('#yelp-pic3').src = details['photos'][2];
+      document.querySelector('#yelp-pic3').style="height: 300px;";
       document.querySelector('#yelp-name').innerHTML = 'Name: ' + name;
       document.querySelector('#yelp-address').innerHTML = 'Address: ' + address;
       document.querySelector('#yelp-phone').innerHTML = 'Phone: ' + phone;
