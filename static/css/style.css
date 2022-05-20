@@ -1,15 +1,17 @@
 /* Styling for navigation bar */
 
 body {
-  margin: 0px;
+  /* margin: 0px; */
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  background-color: white;
+  background-color: #F3F3F3;
 }
 
 .topnav {
+  margin: -10px;
   padding: 10px;
   overflow: hidden;
   background-color: #955277;
+  box-shadow: 0 2px 4px -0.5px rgba(0,0,0,1);
 }
 
 /* Links go to the left side of nav bar */
@@ -17,18 +19,16 @@ body {
   float: left;
   display: block;
   color: white;
-  /* text-align: center; */
-  margin-top: 0px;
   padding: 14px 20px;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 23px;
 }
 
 /* Hovering over a link in the nav bar */
 .topnav a:hover {
-  /* background-color: #ddd; */
   color: black;
-  
+  transition: 0.3s;
+  opacity: 1;
 }
 /* This part is for an active link in the nav bar */
 .topnav a.active {
@@ -46,10 +46,55 @@ body {
   margin-right: 10px;
 }
 
-.topnav input[type=text], input[type=password], input[type=submit] {
-  padding: 6px;
-  margin-top: 10px;
-  margin-bottom: 0px;
-  font-size: 15px;
-  width:120px;
+/* .displayed p {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+} */
+
+input[type=submit], button, a.links {
+  background-color: #fbeee0;
+  border: 2px solid black;
+  border-radius: 30px;
+  box-shadow: black 4px 4px 0 0;
+  color: black;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 40px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin: 5px 5px;
+}
+
+input[type=submit]:hover, a.links:hover {
+  background-color: white;
+}
+
+input[type=submit]:active {
+  box-shadow: black 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+  input[type=submit], a.links {
+    min-width: 120px;
+    padding: 0 25px;
+  }
+}
+
+input[type=text], input[type=password] {
+  line-height: 30px;
+  text-align: center;
+  font-size: 14px;
+}
+
+legend {
+  font-size: 25px;
+  font-weight: 600;
 }

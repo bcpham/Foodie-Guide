@@ -34,7 +34,7 @@ loginButton.addEventListener('submit', (evt) => {
         // document.querySelector('#create-account-link').hidden = true;
         document.querySelector('#logout').hidden = false;
         // document.querySelector('#my-faves').hidden = false; 
-        document.querySelector('#my-faves').innerHTML = 'bookmarks'; 
+        document.querySelector('#my-faves').style.display = '';
         document.querySelector('#newuser').hidden = true;
     };
   });

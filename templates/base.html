@@ -26,7 +26,7 @@
           <a href="/contact">contact</a>
           
           {% if session['logged_in_user_id'] is not defined %}
-          <a id="my-faves" href="/user-favorites"></a>
+          <a id="my-faves" href="/user-favorites" style="display: none">bookmarks</a>
         
           {% else %}
           <a id="my-faves" href="/user-favorites">bookmarks</a>
@@ -38,8 +38,8 @@
         {% if session['logged_in_user_id'] is not defined %}
           <div class="login-container">
             <form id="login" action="/login" method="POST">
-              <input type="text" id="email" name="email" placeholder="E-mail" value="test@test.com">
-              <input type="password" id="password" name="password" placeholder="Password" value="test">
+              <input type="text" id="email" name="email" placeholder="Enter E-mail" value="test@test.com">
+              <input type="password" id="password" name="password" placeholder="Enter Password" value="test">
               <input type="submit" value="Log In">
             </form>
 
@@ -51,8 +51,8 @@
         {% else %}
           <div class="login-container">
             <form id="login" action="/login" method="POST" hidden>
-              <input type="text" id="email" name="email" placeholder="E-mail" value="test@test.com">
-              <input type="password" id="password" name="password" placeholder="Password" value="test">
+              <input type="text" id="email" name="email" placeholder="Enter E-mail" value="test@test.com">
+              <input type="password" id="password" name="password" placeholder="Enter Password" value="test">
               <input type="submit" value="Log In">
             </form>
 
