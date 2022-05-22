@@ -1,7 +1,7 @@
 /* Styling for navigation bar */
 
 body {
-  /* margin: 0px; */
+  margin: 10px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   background-color: #F3F3F3;
 }
@@ -19,7 +19,7 @@ body {
   float: left;
   display: block;
   color: white;
-  padding: 14px 20px;
+  padding: 14px 14px;
   text-decoration: none;
   font-size: 23px;
 }
@@ -46,11 +46,6 @@ body {
   margin-right: 10px;
 }
 
-/* .displayed p {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-} */
 
 input[type=submit], button, a.links {
   background-color: #fbeee0;
@@ -72,17 +67,17 @@ input[type=submit], button, a.links {
   margin: 5px 5px;
 }
 
-input[type=submit]:hover, a.links:hover {
+input[type=submit]:hover, button:hover, a.links:hover {
   background-color: white;
 }
 
-input[type=submit]:active {
+input[type=submit]:active, button:active {
   box-shadow: black 2px 2px 0 0;
   transform: translate(2px, 2px);
 }
 
 @media (min-width: 768px) {
-  input[type=submit], a.links {
+  input[type=submit], button, a.links {
     min-width: 120px;
     padding: 0 25px;
   }
@@ -99,3 +94,47 @@ legend {
   font-weight: 600;
 }
 
+#bookmarklist {
+  font-size: 18px;
+}
+
+.container {
+  display: grid;
+  height: 50vh;
+  grid-template-columns: 4fr 4fr 4fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: 
+  "col1 col1 col1"
+  "col2 col2 col3";
+
+  grid-gap: 0.2rem;
+
+}
+
+#col1 {
+  background: #a7ffeb;
+  grid-area: col1
+}
+
+#col2 {
+  grid-area: col2;
+}
+
+#col3 {
+  grid-area: col3;
+}
+
+#col1, #col2, #col3, .container {
+  border: 2px solid black;
+}
+
+@media only screen and (max-width: 550px) {
+  .container{
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas:
+      "col1"
+      "col2"
+      "col3"
+  }
+}

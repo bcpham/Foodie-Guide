@@ -4,10 +4,10 @@
 {% block body %}
 
 
-<h1>{{user.fname}}'s Bookmarked Restaurants</h1>
+<legend>{{user.fname}}'s Bookmarked Restaurants</legend>
 
 <section>
-    <div>
+    <div id="bookmarklist">
       
       <ul id="user-favorite">
         {% for fav in favorites %}
@@ -22,11 +22,13 @@
             <label for="{{ fav.restaurant.rname }}">{{ fav.restaurant.rname }}</label><br/>
           </div>
         {% endfor %}
-
-        <button id="fav-cancel-button">Cancel</button>
-        <button id="fav-delete-button" type="submit">Delete</button>
+        
+        <div>
+          <p></p>
+          <button id="fav-cancel-button">Cancel</button>
+          <button id="fav-delete-button" type="submit">Delete</button>
+        </div>
       </form>
-  
     </div>
 </section>
 
