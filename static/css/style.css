@@ -89,6 +89,77 @@ input[type=text], input[type=password] {
   font-size: 14px;
 }
 
+/* This part is for grid for web and mobile screens */
+.bodycontainer {
+  display: grid;
+  height: 160vh;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 2fr;
+  grid-template-areas:
+    "block1"
+    "block2";
+  grid-gap: 0.2rem;
+}
+
+#block1 {
+  grid-area: block1;
+}
+
+#block2 {
+  grid-area: block2;
+}
+
+.inner-block2A {
+  display: grid;
+  height: 40vh;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas:
+    "pic1 pic2 pic3";
+  grid-gap: 0.2rem;
+}
+
+/* .inner-block2B {
+    height: 70vh;
+    grid-gap: 0.2rem;
+} */
+
+#pic1 {
+    grid-area: pic1;
+}
+
+#pic2 {
+    grid-area: pic2;
+}
+
+#pic3 {
+    grid-area: pic3;
+}
+
+@media only screen and (max-width: 1200px) {
+    .inner-block2A {
+      height: 110vh;  
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-areas:
+        "pic1"
+        "pic2"
+        "pic3"
+    }
+    
+    .bodycontainer {
+      display: grid;
+      height: 300vh;
+      grid-template-columns: 1fr;
+      grid-template-rows: 0.3fr 1fr;
+      grid-template-areas:
+        "block1"
+        "block2";
+      }
+    }
+
+
+
 legend {
   font-size: 25px;
   font-weight: 600;
@@ -98,17 +169,25 @@ legend {
   font-size: 18px;
 }
 
-.container {
+.bodycontainer, #block1, #block2 {
+    border: 2px solid black;
+  }
+
+
+
+
+
+/* practive grid */
+/* .container {
   display: grid;
   height: 50vh;
-  grid-template-columns: 4fr 4fr 4fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   grid-template-areas: 
   "col1 col1 col1"
   "col2 col2 col3";
 
   grid-gap: 0.2rem;
-
 }
 
 #col1 {
@@ -124,11 +203,11 @@ legend {
   grid-area: col3;
 }
 
-#col1, #col2, #col3, .container {
+#col1, #col2, #col3, .container, .bodycontainer, #block1, #block2 {
   border: 2px solid black;
 }
 
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 390px) {
   .container{
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr 1fr;
@@ -137,4 +216,4 @@ legend {
       "col2"
       "col3"
   }
-}
+} */

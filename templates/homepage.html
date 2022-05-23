@@ -3,36 +3,35 @@
 
 {% block body %}
 
-{% if session['logged_in_user_id'] is not defined %}
-<div id="newuser" style="text-align:right">New User? Bookmark your favorite restaurants and <a href="/create-account">create an account</a>!</div>
-{% endif %}
-
-<div>
-  <img src="/static/img/pexels-1.jpg" height="300">
-  <p></p>
-</div>
-
-
-
-
-<div class="grid">
-<div>
-  <fieldset>
-    <legend>Restaurant Search</legend>
-      <p></p>
-      <form id="search-form" >
-    <!-- method="GET" action="/restaurant-search">  no longer needed, before AJAX was used -->
-    
-        <div>Enter restaurant name: <input type="text" name="rname" id="rname" value="Flour Box"></div>
-        <p></p>
-        <div>Enter city: <input type="text" name="city" id="city" value="Seattle"></div>
-        <p><input type="submit" value="Search"></p>
-  
-      </form>
-  </fieldset>
-</div>
-
 <p></p>
+<div class="bodycontainer">
+  <div id="block1">
+  
+  {% if session['logged_in_user_id'] is not defined %}
+  <div id="newuser" style="text-align:right">New User? Bookmark your favorite restaurants and <a href="/create-account">create an account</a>!</div>
+  {% endif %}
+
+  <div>
+    <p style="text-align:right" id="stat-message" value=""></p>
+  </div>
+
+  
+    <img src="/static/img/pexels-1.jpg" height="300">
+
+    <fieldset>
+      <legend>Restaurant Search</legend>
+        <p></p>
+        <form id="search-form" >
+          <!-- method="GET" action="/restaurant-search">  no longer needed, before AJAX was used -->
+    
+          <div>Enter restaurant name: <input type="text" name="rname" id="rname" value="Flour Box"></div>
+          <p></p>
+          <div>Enter city: <input type="text" name="city" id="city" value="Seattle"></div>
+          <p><input type="submit" value="Search"></p>
+  
+        </form>
+    </fieldset>
+  </div>
 
 <!-- {% if session['logged_in_user_id'] is defined %}
 <section>
@@ -49,42 +48,57 @@
 </section>
 {% endif %} -->
 
-<section>
-  <div id="business-details-results">
-    <b id="title-results"></b>
-    <p id="displayed">
-      <img id="yelp-pic1"></img> 
-      <img id="yelp-pic2"></img> 
-      <img id="yelp-pic3"></img>
-    </p>
-    <p id="yelp-name"></p>
-    <p id="yelp-address"></p>
-    <p id="yelp-phone"></p>
-    <p id="yelp-rating"></p>
-    <p id="yelp-rev-count"></p>
-    
-    <b id="title-opening"></b>
-    <ul id="yelp-bus-hours"></ul>
-    
-    <b id="title-reviews"></b>
-    <ol id="yelp-rev"></ol>
+  <div id="block2">
+    <div id="business-details-results">
+      <b id="title-results"></b>
+      
+      <div class="inner-block2A">
+        <p id="displayed">
+          
+          <div id="pic1">
+            <img id="yelp-pic1"></img>
+          </div> 
+          
+          <div id="pic2">
+            <img id="yelp-pic2"></img> 
+          </div>
+          
+          <div id="pic3">
+            <img id="yelp-pic3"></img>
+          </div>
+        
+        </p>
+      </div>
 
-    <p><a id="yelp-pro"></a></p>
+      <div class="inner-block2B">
+        <p id="yelp-name"></p>
+        <p id="yelp-address"></p>
+        <p id="yelp-phone"></p>
+        <p id="yelp-rating"></p>
+        <p id="yelp-rev-count"></p>
+    
+        <b id="title-opening"></b>
+        <ul id="yelp-bus-hours"></ul>
+      
+        <b id="title-reviews"></b>
+        <ol id="yelp-rev"></ol>
+
+        <p><a id="yelp-pro"></a></p>
+      
+        <form id="rest-fave" action="/add-favorites" hidden>
+
+          <input type="submit" value="Bookmark">
+          <input id="hidden-rest-id" name="hidden-rest-id" type="text" hidden value="">
+          <input id="hidden-rest-name" name="hidden-rest-name" type="text" hidden value="">
+    
+        </form>
+      
+      </div>
+
   </div>
-</section>
-
-
-<section>
-  <form id="rest-fave" action="/add-favorites" hidden>
-
-    <input type="submit" value="Bookmark">
-    <input id="hidden-rest-id" name="hidden-rest-id" type="text" hidden value="">
-    <input id="hidden-rest-name" name="hidden-rest-name" type="text" hidden value="">
-
-  </form>
-</section>
 
 </div>
+
 
 <!-- {% if session['logged_in_user_id'] is not defined %}
 <section>
@@ -125,8 +139,8 @@
 <h4>New User? Bookmark your favorite restaurants and <a href="/create-account">create an account</a> !</h4>
 </section> -->
 
-<div class="container">
-
+<!-- practice grid -->
+<!-- <div class="container">
     
     <div id="col1">Column1</div>
    
@@ -134,34 +148,7 @@
     
     <div id="col3">Column3</div>
 
-    <!-- <div id="col4">Column4</div>
-
-    <div id="col5">Column5</div>
-
-    <div id="col6">Column6</div> -->
-
-
-</div>
-
-<!-- <div class="container">
-  <div class="row">
-    
-    <div class="col">
-      Column
-    </div>
-   
-    <div class="col">
-      Column
-    </div>
-    
-    <div class="col">
-      Column
-    </div>
-    
-  </div>
 </div> -->
-
-
 
 <script src="/static/js/yelp-busdetails.js"></script>
 <script src="/static/js/login.js"></script>
