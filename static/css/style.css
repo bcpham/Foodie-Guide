@@ -7,17 +7,48 @@ body {
 }
 
 .topnav {
-  margin: -10px;
-  padding: 10px;
-  overflow: hidden;
-  background-color: #955277;
-  box-shadow: 0 2px 4px -0.5px rgba(0,0,0,1);
+    width: 101%;
+    margin: -10px;
+    padding: 10px;
+    overflow: hidden;
+    background-color: #955277;
+    box-shadow: 0 2px 4px -0.5px rgba(0,0,0,1);
+}
+
+nav {
+  max-width: 1720px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+}
+
+.left-menu {
+  grid-column: 1;
+}
+
+.logo {
+  grid-column: 2;
+}
+
+.login-container {
+  grid-column: 3;
+}
+
+#login, #logout {
+  display: block;
+  float: right;
+}
+
+
+#nav-toggle, .burger-menu {
+  display: none;
 }
 
 /* Links go to the left side of nav bar */
-.topnav a {
-  float: left;
+#home, #about, #contact, #my-faves {
   display: block;
+  float: left;
   color: white;
   padding: 14px 14px;
   text-decoration: none;
@@ -25,28 +56,22 @@ body {
 }
 
 /* Hovering over a link in the nav bar */
-.topnav a:hover {
+.topnav #home:hover, #about:hover, #contact:hover, #my-faves:hover {
   color: black;
   transition: 0.3s;
   opacity: 1;
 }
 /* This part is for an active link in the nav bar */
-.topnav a.active {
+.topnav .logo {
   background-color: #955277;
-  /* color: #955277; */
-  text-align: center;
+  text-align: left;
   font-size: 20px;
   margin-bottom: 0px;
   padding: 0px;
 }
 
-/* Log in container goes to the right */
-.topnav .login-container {
-  float: right;
-  margin-right: 10px;
-}
 
-
+/* Button styling */
 input[type=submit], button, a.links {
   background-color: #fbeee0;
   border: 2px solid black;
@@ -111,18 +136,13 @@ input[type=text], input[type=password] {
 
 .inner-block2A {
   display: grid;
-  height: 40vh;
+  height: 35vh;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr;
   grid-template-areas:
     "pic1 pic2 pic3";
   grid-gap: 0.2rem;
 }
-
-/* .inner-block2B {
-    height: 70vh;
-    grid-gap: 0.2rem;
-} */
 
 #pic1 {
     grid-area: pic1;
@@ -137,28 +157,39 @@ input[type=text], input[type=password] {
 }
 
 @media only screen and (max-width: 1200px) {
-    .inner-block2A {
-      height: 110vh;  
-      grid-template-columns: 1fr;
-      grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-      grid-template-areas:
-        "pic1"
-        "pic2"
-        "pic3"
-    }
+  .inner-block2A {
+    height: 100vh;  
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+    "pic1"
+    "pic2"
+    "pic3"
+  }
     
-    .bodycontainer {
-      display: grid;
-      height: 300vh;
-      grid-template-columns: 1fr;
-      grid-template-rows: 0.3fr 1fr;
-      grid-template-areas:
-        "block1"
-        "block2";
-      }
+  .bodycontainer {
+    display: grid;
+    height: 230vh;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.3fr 1fr;
+    grid-template-areas:
+      "block1"
+      "block2";
     }
 
+  .burger-menu {
+    display: inline-block;
+  }
 
+  .left-menu {
+    display: none;
+  }
+
+  #nav-toggle:checked ~ .left-menu {
+    display: grid;
+    grid-row: 2;
+  }
+}
 
 legend {
   font-size: 25px;
@@ -169,51 +200,6 @@ legend {
   font-size: 18px;
 }
 
-.bodycontainer, #block1, #block2 {
+/* .bodycontainer, #block1, #block2, .inner-block2A {
     border: 2px solid black;
-  }
-
-
-
-
-
-/* practive grid */
-/* .container {
-  display: grid;
-  height: 50vh;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  grid-template-areas: 
-  "col1 col1 col1"
-  "col2 col2 col3";
-
-  grid-gap: 0.2rem;
-}
-
-#col1 {
-  background: #a7ffeb;
-  grid-area: col1
-}
-
-#col2 {
-  grid-area: col2;
-}
-
-#col3 {
-  grid-area: col3;
-}
-
-#col1, #col2, #col3, .container, .bodycontainer, #block1, #block2 {
-  border: 2px solid black;
-}
-
-@media only screen and (max-width: 390px) {
-  .container{
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-areas:
-      "col1"
-      "col2"
-      "col3"
-  }
 } */

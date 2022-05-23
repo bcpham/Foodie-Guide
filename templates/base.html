@@ -20,54 +20,59 @@
   </head>
 
   <body>
-    <nav class="topnav">
-      <div class="row">
-        <div class="col-6">
-          
-          <a class="active" href="/"> <img class="logo" src="/static/img/main-logo2.JPG"></a>
-          <a href="/">home</a>
-          <a href="/about">about</a>
-          <a href="/contact">contact</a>
-          
+    <div class="topnav">
+      <nav>
+
+        <input type="checkbox" id="nav-toggle">
+        <label for="nav-toggle" class="burger-menu">
+          <img src="/static/img/burger-50px.png" alt="">
+        </label>
+        
+        <div class="left-menu">
+          <a id="home" href="/">home</a>
+          <a id="about" href="/about">about</a>
+          <a id="contact" href="/contact">contact</a>
+      
           {% if session['logged_in_user_id'] is not defined %}
           <a id="my-faves" href="/user-favorites" style="display: none">bookmarks</a>
-        
           {% else %}
           <a id="my-faves" href="/user-favorites">bookmarks</a>
-
           {% endif %}
-        </div>
-
-        <div class="col-6">
-        {% if session['logged_in_user_id'] is not defined %}
-          <div class="login-container">
-            <form id="login" action="/login" method="POST">
-              <input type="text" id="email" name="email" placeholder="Enter E-mail" value="test@test.com">
-              <input type="password" id="password" name="password" placeholder="Enter Password" value="test">
-              <input type="submit" value="Log In">
-            </form>
-
-            <form id="logout" action="/logout" hidden>
-              <input type="submit" value="Log Out">
-            </form>
-          </div>
         
-        {% else %}
-          <div class="login-container">
-            <form id="login" action="/login" method="POST" hidden>
-              <input type="text" id="email" name="email" placeholder="Enter E-mail" value="test@test.com">
-              <input type="password" id="password" name="password" placeholder="Enter Password" value="test">
-              <input type="submit" value="Log In">
-            </form>
-
-            <form id="logout" action="/logout">
-              <input type="submit" value="Log Out">
-            </form>
-          </div>
-        {% endif %}
         </div>
-      </div>    
-    </nav>
+        
+        <a class="logo" id="logo" href="/"> <img class="logo1" src="/static/img/main-logo2.JPG"></a>
+        
+        {% if session['logged_in_user_id'] is not defined %}
+        <div class="login-container">
+          <form id="login" action="/login" method="POST">
+            <input type="text" id="email" name="email" placeholder="Enter E-mail" value="test@test.com">
+            <input type="password" id="password" name="password" placeholder="Enter Password" value="test">
+            <input type="submit" value="Log In">
+          </form>
+  
+          <form id="logout" action="/logout" hidden>
+            <input type="submit" value="Log Out">
+          </form>
+        </div>
+          
+        {% else %}
+        <div class="login-container">
+          <form id="login" action="/login" method="POST" hidden>
+            <input type="text" id="email" name="email" placeholder="Enter E-mail" value="test@test.com">
+            <input type="password" id="password" name="password" placeholder="Enter Password" value="test">
+            <input type="submit" value="Log In">
+          </form>
+  
+          <form id="logout" action="/logout">
+            <input type="submit" value="Log Out">
+          </form>
+        </div>
+        {% endif %}
+      
+      </nav>
+    </div>
+
 
     <!-- Using DOM to show "flash messages" -->
     <!-- <div>
