@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}.::Foodie Guide::.{% endblock %}
+{% block title %}Foodie Guide{% endblock %}
 
 {% block body %}
 
@@ -35,7 +35,9 @@
   </div>
 
   <form id="edit-mode" action="/delete-favorite">
-    <button type="submit">Edit</button>
+    <button type="submit" aria-label="Select the edit button to edit the list of bookmarked restaurants">
+      Edit
+    </button>
   </form>
 
 </div>

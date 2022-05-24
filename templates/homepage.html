@@ -8,7 +8,9 @@
   <div id="block1">
   
   {% if session['logged_in_user_id'] is not defined %}
-    <div id="newuser" style="text-align:right;font-weight:bold;background-color:#F3F3F3">New User? Bookmark your favorite restaurants and <a href="/create-account">create an account</a>!</div>
+    <div id="newuser" style="text-align:right;font-weight:bold;background-color:#F3F3F3">
+      New User? Bookmark your favorite restaurants and <a href="/create-account" aria-label="Click this link to create an account">create an account</a>!
+    </div>
   {% endif %}
 
   <div>
@@ -30,14 +32,14 @@
       <form id="search-form" style="text-align:center">
         <!-- method="GET" action="/restaurant-search">  no longer needed, before AJAX was used -->
     
-        <label for="restaurantName">Enter name: <input type="text" name="rname" id="rname" value="Flour Box"></label>
+        <label for="restaurantName">Enter name: <input type="text" name="rname" id="rname" aria-label="Enter name of restaurant in this search field"></label>
         <p></p>
-        <label for="city">Enter city: <input type="text" name="city" id="city" value="Seattle"></label>
+        <label for="city">Enter city: <input type="text" name="city" id="city" aria-label="Enter name of city in this search field"></label>
 
-        <p><input type="submit" value="Search"></p>
+        <p><input type="submit" value="Search" aria-label="Click this search button to search for restaurant results"></p>
   
       </form>
-    </fieldset>
+    </fieldset>   
   </div>
   </div>
 </div>
@@ -66,15 +68,15 @@
         <p id="displayed">
           
           <div id="pic1">
-            <img id="yelp-pic1" alt="First picture of restaurant"></img>
+            <img id="yelp-pic1" alt="First picture from restaurant search"></img>
           </div> 
           
           <div id="pic2">
-            <img id="yelp-pic2" alt="Second picture of restaurant"></img> 
+            <img id="yelp-pic2" alt="Second picture from restaurant search"></img> 
           </div>
           
           <div id="pic3">
-            <img id="yelp-pic3" alt="Third picture of restaurant"></img>
+            <img id="yelp-pic3" alt="Third picture from restaurant search"></img>
           </div>
         
         </p>
@@ -93,11 +95,11 @@
         <b id="title-reviews"></b>
         <ol id="yelp-rev"></ol>
 
-        <p><a id="yelp-pro"></a></p>
+        <p><a id="yelp-pro" aria-label="Click this external linkt to view the Yelp Profile Page"></a></p>
       
         <form id="rest-fave" action="/add-favorites" hidden>
 
-          <input type="submit" value="Bookmark">
+          <input type="submit" value="Bookmark" aria-label="Click this bookmark button to bookmark the searched restaurant">
           <input id="hidden-rest-id" name="hidden-rest-id" type="text" hidden value="">
           <input id="hidden-rest-name" name="hidden-rest-name" type="text" hidden value="">
     

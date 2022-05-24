@@ -40,13 +40,15 @@
           {% endif %}
         </div>
         
-        <a class="logo" id="logo" href="/"> <img class="logo1" src="/static/img/main-logo2.JPG" alt="Logo and a link to return home"></a>
+        <a class="logo" id="logo" href="/"> <img class="logo1" src="/static/img/main-logo2.JPG" alt="This is a logo and clicking this link will return home"></a>
         
         {% if session['logged_in_user_id'] is not defined %}
         <div class="login-container">
           <form id="login" action="/login" method="POST">
-            <input type="text" id="email" name="email" placeholder="Enter E-mail" value="test@test.com">
-            <input type="password" id="password" name="password" placeholder="Enter Password" value="test">
+            <label for="email" style="color:white">Enter E-mail:<br> 
+              <input type="text" id="email" name="email" size="18" aria-label="Enter your email in this field to log in"></label>
+            <label for="password" style="color:white">Enter Password:<br>
+              <input type="password" id="password" name="password" size="18" aria-label="Enter your password in this field to log in"></label>
             <input type="submit" value="Log In">
           </form>
   
@@ -58,8 +60,10 @@
         {% else %}
         <div class="login-container">
           <form id="login" action="/login" method="POST" hidden>
-            <input type="text" id="email" name="email" placeholder="Enter E-mail" value="test@test.com">
-            <input type="password" id="password" name="password" placeholder="Enter Password" value="test">
+            <label for="email">Enter E-mail: 
+              <input type="text" id="email" name="email" aria-label="Enter your email in this field to log in"></label>
+            <label for="password">Enter Password: 
+              <input type="password" id="password" name="password" aria-label="Enter your password in this field to log in"></label>
             <input type="submit" value="Log In">
           </form>
   
