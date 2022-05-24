@@ -160,10 +160,10 @@ input[type=text], input[type=password] {
 .block1B {
   display: grid;
   height: 25vh;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 618px 1fr;
   grid-template-rows: 1fr;
   grid-template-areas:
-    "search-field search-field search-field"
+    ". search-field ."
 }
 
 #search-field {
