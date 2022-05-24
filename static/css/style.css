@@ -154,7 +154,6 @@ input[type=text], input[type=password] {
 #search-field, #block2, #welcome, #contactt, .bookmark-grid, #create-acct {
   background-color: #F3F3F3;
   box-shadow: 0 2px 10px -1px rgba(0,0,0,10);
-  border-radius: 4%;
   margin: 10px;
 }
 

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}.::Foodie Guide::.{% endblock %}
+{% block title %}Foodie Guide{% endblock %}
 
 {% block body %}
 
@@ -8,7 +8,7 @@
   <div id="block1">
   
   {% if session['logged_in_user_id'] is not defined %}
-  <div id="newuser" style="text-align:right;font-weight:bold;background-color:#F3F3F3">New User? Bookmark your favorite restaurants and <a href="/create-account">create an account</a>!</div>
+    <div id="newuser" style="text-align:right;font-weight:bold;background-color:#F3F3F3">New User? Bookmark your favorite restaurants and <a href="/create-account">create an account</a>!</div>
   {% endif %}
 
   <div>
@@ -16,7 +16,7 @@
   </div>
 
   <div id="food-pic1">
-    <img src="/static/img/pexels-1.jpg" height="400">
+    <img src="/static/img/pexels-1.jpg" height="400" alt="">
   </div>
     
   <p></p>
@@ -27,16 +27,16 @@
       <p></p>
       <legend style="text-align:center">Restaurant Search</legend>
 
-        <form id="search-form" style="text-align:center">
-          <!-- method="GET" action="/restaurant-search">  no longer needed, before AJAX was used -->
+      <form id="search-form" style="text-align:center">
+        <!-- method="GET" action="/restaurant-search">  no longer needed, before AJAX was used -->
     
-          <div>Enter name: <input type="text" name="rname" id="rname" value="Flour Box"></div>
-          <p></p>
-          <div>Enter city: <input type="text" name="city" id="city" value="Seattle"></div>
+        <label for="restaurantName">Enter name: <input type="text" name="rname" id="rname" value="Flour Box"></label>
+        <p></p>
+        <label for="city">Enter city: <input type="text" name="city" id="city" value="Seattle"></label>
 
-          <p><input type="submit" value="Search"></p>
+        <p><input type="submit" value="Search"></p>
   
-        </form>
+      </form>
     </fieldset>
   </div>
   </div>
@@ -66,15 +66,15 @@
         <p id="displayed">
           
           <div id="pic1">
-            <img id="yelp-pic1"></img>
+            <img id="yelp-pic1" alt="First picture of restaurant"></img>
           </div> 
           
           <div id="pic2">
-            <img id="yelp-pic2"></img> 
+            <img id="yelp-pic2" alt="Second picture of restaurant"></img> 
           </div>
           
           <div id="pic3">
-            <img id="yelp-pic3"></img>
+            <img id="yelp-pic3" alt="Third picture of restaurant"></img>
           </div>
         
         </p>

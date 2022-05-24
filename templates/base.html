@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en">
   
   <head>
     <meta charset="utf-8">
@@ -38,10 +38,9 @@
           {% else %}
           <a id="my-faves" href="/user-favorites">bookmarks</a>
           {% endif %}
-        
         </div>
         
-        <a class="logo" id="logo" href="/"> <img class="logo1" src="/static/img/main-logo2.JPG"></a>
+        <a class="logo" id="logo" href="/"> <img class="logo1" src="/static/img/main-logo2.JPG" alt="Logo and a link to return home"></a>
         
         {% if session['logged_in_user_id'] is not defined %}
         <div class="login-container">
@@ -78,7 +77,7 @@
     <!-- <div>
       <p style="text-align:right" id="stat-message" value=""></p>
     </div> -->
-    <!-- <img id="wood" src="/../static/img/pexels-lukas-349610.jpg" alt=""> -->
+    
     {% block body %}{% endblock %}
     
     {% block after_body %}{% endblock %}
