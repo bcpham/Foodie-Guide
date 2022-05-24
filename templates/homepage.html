@@ -8,30 +8,39 @@
   <div id="block1">
   
   {% if session['logged_in_user_id'] is not defined %}
-  <div id="newuser" style="text-align:right">New User? Bookmark your favorite restaurants and <a href="/create-account">create an account</a>!</div>
+  <div id="newuser" style="text-align:right;font-weight:bold;background-color:#F3F3F3">New User? Bookmark your favorite restaurants and <a href="/create-account">create an account</a>!</div>
   {% endif %}
 
   <div>
-    <p style="text-align:right;font-weight:bold;color:red" id="stat-message" value=""></p>
+    <p style="text-align:right;font-weight:bold;color:blue;background-color:#F3F3F3" id="stat-message" value=""></p>
   </div>
 
+  <div id="food-pic1">
+    <img src="/static/img/pexels-1.jpg" height="400">
+  </div>
+    
+  <p></p>
+  <div class="block1B">
   
-    <img src="/static/img/pexels-1.jpg" height="300">
-    <p></p>
+  <div id="search-field">
     <fieldset>
-      <legend>Restaurant Search</legend>
-        <p></p>
-        <form id="search-form" >
+      <p></p>
+      <legend style="text-align:center">Restaurant Search</legend>
+
+        <form id="search-form" style="text-align:center">
           <!-- method="GET" action="/restaurant-search">  no longer needed, before AJAX was used -->
     
-          <div>Enter restaurant name: <input type="text" name="rname" id="rname" value="Flour Box"></div>
+          <div>Enter name: <input type="text" name="rname" id="rname" value="Flour Box"></div>
           <p></p>
           <div>Enter city: <input type="text" name="city" id="city" value="Seattle"></div>
+
           <p><input type="submit" value="Search"></p>
   
         </form>
     </fieldset>
   </div>
+  </div>
+</div>
 
 <!-- {% if session['logged_in_user_id'] is defined %}
 <section>
@@ -48,10 +57,11 @@
 </section>
 {% endif %} -->
 
-  <div id="block2">
+  <div id="block2" hidden>
     <div id="business-details-results">
+      <p></p>
       <b id="title-results"></b>
-      
+      <p></p>
       <div class="inner-block2A">
         <p id="displayed">
           
@@ -92,12 +102,9 @@
           <input id="hidden-rest-name" name="hidden-rest-name" type="text" hidden value="">
     
         </form>
-      
       </div>
-
   </div>
-
-</div>
+ </div>
 
 
 <!-- {% if session['logged_in_user_id'] is not defined %}

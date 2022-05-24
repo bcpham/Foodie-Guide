@@ -47,7 +47,7 @@ deleteForm.addEventListener('submit', (evt) => {
         document.querySelector("#user-favorite").hidden = false;
         document.querySelector("#user-favorite-form").hidden = true;
         document.querySelector("#edit-mode").hidden = false;  
-        document.querySelector('#stat-message').innerHTML = status["msg"];
+        // document.querySelector('#stat-message').innerHTML = status["msg"];
 
         if (status["success"] == true) {
             console.log(`#rest-div-${status["restaurant_id"]}`);

@@ -11,37 +11,34 @@
   <p></p>
 </div>
 
-<section>
-    <div id="bookmarklist">
+
+<div class="bookmark-grid">
+  <div id="bookmarklist">
       
-      <ul id="user-favorite">
-        {% for fav in favorites %}
-          <li id="li-fav-{{fav.restaurant.restaurant_id}}"> {{ fav.restaurant.rname }} </li>
-        {% endfor %}
-      </ul>
+    <ul id="user-favorite">
+      {% for fav in favorites %}
+        <li id="li-fav-{{fav.restaurant.restaurant_id}}"> {{ fav.restaurant.rname }} </li>
+      {% endfor %}
+    </ul>
 
-      <form id="user-favorite-form" hidden>
-        {% for fav in favorites %}
-          <div id="rest-div-{{ fav.restaurant.restaurant_id }}">
-            <input name="favorites" type="radio" id="{{ fav.restaurant.rname }}" value="{{ fav.restaurant.restaurant_id }}">
-            <label for="{{ fav.restaurant.rname }}">{{ fav.restaurant.rname }}</label><br/>
-          </div>
-        {% endfor %}
-        
-        <div>
-          <p></p>
-          <button id="fav-cancel-button">Cancel</button>
-          <button id="fav-delete-button" type="submit">Delete</button>
+    <form id="user-favorite-form" hidden>
+      {% for fav in favorites %}
+        <div id="rest-div-{{ fav.restaurant.restaurant_id }}">
+          <input name="favorites" type="radio" id="{{ fav.restaurant.rname }}" value="{{ fav.restaurant.restaurant_id }}">
+          <label for="{{ fav.restaurant.rname }}">{{ fav.restaurant.rname }}</label><br/>
         </div>
-      </form>
-    </div>
-</section>
+      {% endfor %}
+  
+      <button id="fav-cancel-button">Cancel</button>
+      <button id="fav-delete-button" type="submit">Delete</button>
+    </form>
+  </div>
 
-<section>
   <form id="edit-mode" action="/delete-favorite">
     <button type="submit">Edit</button>
   </form>
-</section>
+
+</div>
 
 <!-- <section>
   <p>Returning to <a href="/">home page</a>.</p>

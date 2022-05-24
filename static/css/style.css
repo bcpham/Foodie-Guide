@@ -4,10 +4,17 @@ body {
   margin: 10px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   background-color: #F3F3F3;
+  background-image: url("/static/img/foody.png");
+  background-repeat: repeat;
 }
 
 img {
   box-shadow: 0 2px 10px -1px rgba(0,0,0,10);
+}
+
+#food-pic1 {
+  display: flex;
+  justify-content: center;
 }
 
 #burger-con {
@@ -17,8 +24,6 @@ img {
 
 /* Navigation Bar */
 .topnav {
-  /* width: 100%; */
-  /* margin: -10px; */
   padding: 10px;
   overflow: hidden;
   background-color: #955277;
@@ -38,11 +43,9 @@ nav {
 .left-menu {
   grid-column: 1;
 }
-
 .logo {
   grid-column: 2;
 }
-
 .login-container {
   grid-column: 3;
 }
@@ -131,13 +134,12 @@ input[type=text], input[type=password] {
 /* This part is for grid for web and mobile screens */
 .bodycontainer {
   display: grid;
-  height: 160vh;
+  height: 180vh;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 2fr;
   grid-template-areas:
     "block1"
     "block2";
-  grid-gap: 0.2rem;
 }
 
 #block1 {
@@ -145,6 +147,83 @@ input[type=text], input[type=password] {
 }
 #block2 {
   grid-area: block2;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#search-field, #block2, #welcome, #contactt, .bookmark-grid {
+  background-color: #F3F3F3;
+  box-shadow: 0 2px 10px -1px rgba(0,0,0,10);
+  border-radius: 4%;
+  margin: 10px;
+}
+
+.block1B {
+  display: grid;
+  height: 25vh;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas:
+    "search-field search-field search-field"
+}
+
+#search-field {
+  grid-area: search-field;
+
+}
+#food-pic1 {
+  grid-area: food-pic1;
+}
+
+.bookmark-grid {
+  padding-top: 20px;
+  padding-left: 20px;
+  display: grid;
+  height: 25vh;
+  width: 60vh;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "bookmarklist"
+    "edit-mode"
+}
+
+#bookmarklist {
+  grid-area: bookmarklist;
+}
+#edit-mode {
+  grid-area: edit-mode;
+}
+
+#welcome {
+  padding: 10px;
+  display: grid;
+  height: 45vh;
+  width: 50vh;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "welcome"
+}
+
+#welcome {
+  grid-area: welcome;
+}
+
+.contact-grid {
+  display: grid;
+  height: 20vh;
+  width: 95vh;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "contactt"
+}
+
+#contactt {
+  grid-area: contactt;
+  padding-left: 10px;
+  height: 20vh;
 }
 
 .inner-block2A {
@@ -177,10 +256,15 @@ input[type=text], input[type=password] {
     "pic2"
     "pic3"
   }
-    
+
+  #pic1, #pic2, #pic3 {
+    display: flex;
+    justify-content: center;
+  }
+  
   .bodycontainer {
     display: grid;
-    height: 230vh;
+    height: 250vh;
     grid-template-columns: 1fr;
     grid-template-rows: 0.3fr 1fr;
     grid-template-areas:

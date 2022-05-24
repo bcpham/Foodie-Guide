@@ -50,6 +50,7 @@ searchForm.addEventListener('submit', (evt) => {
       let yelp_url = details['url'];
       
       //Create hmtl elements and insert into the dom
+      document.querySelector('#block2').hidden = false;
       document.querySelector('#title-results').innerHTML = 'Results:';
       document.querySelector('#yelp-pic1').src = details['photos'][0];
       document.querySelector('#yelp-pic1').style="height: 300px;";
@@ -65,6 +66,8 @@ searchForm.addEventListener('submit', (evt) => {
       
       document.querySelector('#yelp-pro').setAttribute("href", yelp_url);
       document.querySelector('#yelp-pro').innerHTML= "View Yelp profile";
+      
+      
       //END OF VARIOUS SECTIONS
 
       //BOOKMARK SECTION
